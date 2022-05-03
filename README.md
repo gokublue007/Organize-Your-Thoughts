@@ -55,7 +55,12 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Technologies
 ```
-- express.js
+- HTML5
+- CSS3
+- JavaScript
+- Node.js
+- Express.js
+- Bootstrap
 ```
 
 ## Installation
