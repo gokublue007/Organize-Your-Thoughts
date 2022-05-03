@@ -10,7 +10,7 @@ app.use(express.json());
 
 // routers for app
 require("./routes/index")(app);
-require("./routes/notes")(app);
+require("./routes/paths")(app);
 
 // lisinting to port
 app.listen(PORT, () => {
