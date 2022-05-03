@@ -36,6 +36,6 @@ module.exports = function(app) {
         }
 
         fs.writeFileSync("./db/db.json", JSON.stringify(data));
-        res.JSON(data);
+        res.json(data);
     });
 }
