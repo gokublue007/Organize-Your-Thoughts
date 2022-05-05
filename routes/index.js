@@ -1,6 +1,7 @@
+// load data
 const fs = require("fs");
 let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-
+// routing
 module.exports = function(app) {
     app.get("/api/notes", function(req,res){
         res.json(data);
@@ -10,24 +11,25 @@ module.exports = function(app) {
         res.json(data[Number(req.params.id)]);
     });
 
-    app.post("/api/notes", function(req,res){
+    app.post("/api/notes", function(req,res) {
         let nextNote = req.body;
         let uniqueId = (data.length).toString();
         console.log(uniqueId);
+        nextNote.id = uniqueId;
         data.push(nextNote);
 
-        fs.writeFileSync("./db/db.json", JSON.stringify(data), function(err){
+        fs.writeFileSync("./db/db.json", JSON.stringify(data), function(err) {
             if (err) throw (err)
         });
         res.json(data);
     });
 
-    app.delete("/api/notes/:id", function(req,res){
-        let noteID = req.params.id;
+    app.delete("/api/notes/:id", function(req,res) {
+        let noteId = req.params.id;
         let nextID = 0;
-        console.log(`Deleted the note with id ${noteID} from list.`);
+        console.log(`Deleted the note with id ${noteId} from list.`);
         data = data.filter(currentNote => {
-            return currentNote.id != noteID;
+            return currentNote.id != noteId;
         });
 
         for (currentNote of data) {
